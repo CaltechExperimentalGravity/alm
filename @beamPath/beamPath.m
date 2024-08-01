@@ -394,7 +394,7 @@ classdef beamPath < handle
             % path1.seedWaist(w0,position,lambda)
             % This will set the seed beam to be a waist at z = position
             % with beam width = w0. The wavelength is set by lambda, if omitted,
-            % the default value is 1064nm.
+            % the default value is 1064 nm.
             if nargin<4
                 lambda = 1064e-9;
             end
@@ -410,7 +410,7 @@ classdef beamPath < handle
             % path1.seedWaistR(w0,R0,position,lambda)
             % This will set the seed beam to be a beam waist w0  and radius of curvature R0
             % at z = position. The wavelength is set by lambda, if omitted,
-            % the default value is 1064nm.
+            % the default value is 1064 nm.
             if nargin<5
                 lambda = 1064e-9;
             end
@@ -426,7 +426,7 @@ classdef beamPath < handle
             % path1.targetWaist(w0,position,lambda)
             % This will set the target beam to be a waist at z = position
             % with beam width = w0. The wavelength is set by lambda, if omitted,
-            % the default value is 1064nm.
+            % the default value is 1064 nm.
             if nargin<4
                 lambda = 1064e-9;
             end
@@ -441,7 +441,7 @@ classdef beamPath < handle
             % path1.targetWaist(w0,R0,position,lambda)
             % This will set the target beam to be a waist at z = position
             % with beam waist size = w0 and radius R0. The wavelength is set by lambda, if omitted,
-            % the default value is 1064nm.
+            % the default value is 1064 nm.
             if nargin<5
                 lambda = 1064e-9;
             end
@@ -1326,38 +1326,38 @@ classdef beamPath < handle
             % in the beam path
             
             % set plot defaults
-            if nargin<3
+            if nargin < 3
                 plotComponents = 1;
-                plotBeamWidth = 1;
-                plotBeams = 0;
-                plotWaists = 1;
-                plotGouyPhase = 1;
+                plotBeamWidth  = 1;
+                plotBeams      = 0;
+                plotWaists     = 1;
+                plotGouyPhase  = 1;
             else % they are choosing, set all to false
                 plotComponents = 0;
-                plotBeamWidth = 0;
-                plotBeams = 0;
-                plotWaists = 0;
-                plotGouyPhase = 0;
+                plotBeamWidth  = 0;
+                plotBeams      = 0;
+                plotWaists     = 0;
+                plotGouyPhase  = 0;
             end
             
             % parse plot options
             for kk=1:length(varargin)
                 switch lower(varargin{kk})
                     case 'components'
-                        plotComponents=1;
+                        plotComponents = 1;
                     case 'beamwidth'
-                        plotBeamWidth=1;
+                        plotBeamWidth  = 1;
                     case 'beams'
-                        plotBeams=1;
+                        plotBeams = 1;
                     case 'waists'
-                        plotWaists=1;
+                        plotWaists = 1;
                     case 'gouyphase'
-                        plotGouyPhase=1;
+                        plotGouyPhase = 1;
                     case 'nobeams'
                         warning('nobeams is depreciated.');
                         plotComponents = 1;
-                        plotBeamWidth = 1;
-                        plotGouyPhase = 1;
+                        plotBeamWidth  = 1;
+                        plotGouyPhase  = 1;
                     otherwise
                         error(['I don''t understand how to plot ' varargin{kk}]);
                 end
@@ -1373,7 +1373,7 @@ classdef beamPath < handle
                 error('You must plot either the Beam Width or the Gouy Phase')
             end
             
-            if nargin<2 || isempty(zdomain)
+            if nargin < 2 || isempty(zdomain)
                 zlist = [pathobj.components.z];
                 if ~isempty(pathobj.seedq.q) && plotBeams
                     zlist = [zlist,pathobj.seedz];
@@ -1389,14 +1389,14 @@ classdef beamPath < handle
                 zmin = min(zlist);
                 zmax = max(zlist);
                 
-                if zmin == zmax %make a very basic plot if there is only one object to plot
+                if zmin == zmax % make a very basic plot if there is only one object to plot
                     zmin = zmin - 0.5;
                     zmax = zmin + 1;
                 end
                 
                 zlength = zmax - zmin;
                 
-                zdomain = linspace(zmin - 0.1*zlength,zmax + 0.1*zlength,100);
+                zdomain = linspace(zmin - 0.1*zlength, zmax + 0.1*zlength, 100);
             end
             
             clf
@@ -1406,7 +1406,7 @@ classdef beamPath < handle
             end
             if plotBeamWidth
                 hold on
-                pathobj.plotBeamWidth(zdomain,'r');
+                pathobj.plotBeamWidth(zdomain, 'r');
                 axis tight
                 grid on
                 if plotComponents
@@ -1437,7 +1437,7 @@ classdef beamPath < handle
                 end
                 hold off
                 
-                ylabel('Gouy Phase (degrees)')
+                ylabel('Gouy Phase [deg]')
                 
             end
             xlabel('axial dimension, z (m)')

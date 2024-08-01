@@ -53,7 +53,7 @@ classdef beamq
             end
             
             ZR = pi*w0^2/lambda;
-            q = Z + i*ZR;
+            q = Z + 1i*ZR;
             
             qobjout = beamq(q);
             qobjout.lambda = lambda;
@@ -64,7 +64,7 @@ classdef beamq
             end
             
             ZR = pi*w0^2/lambda;
-            q = (1/R - i/ZR)^-1;
+            q = (1/R - 1i/ZR)^-1;
 
             qobjout = beamq(q);
             qobjout.lambda = lambda;
@@ -188,7 +188,7 @@ classdef beamq
             beamout.q = qout;
         end
         % plotting
-        function plothandle = plotBeamWidth(qarray,zdomain,varargin)
+        function plothandle = plotBeamWidth(qarray, zdomain, varargin)
             % -- beamq.plotBeamWidth --
             % Given an array of beamq objects, this function will plot 
             % the beam width.
@@ -196,8 +196,8 @@ classdef beamq
             if ~washold
                 hold on
             end
-            ploth = plot(zdomain,[qarray.beamWidth],varargin{:});
-            plot(zdomain,-[qarray.beamWidth],varargin{:});
+            ploth = plot(zdomain,  [qarray.beamWidth], varargin{:});
+            plotv = plot(zdomain, -[qarray.beamWidth], varargin{:});
             if ~washold
                 hold off
             end
