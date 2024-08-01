@@ -27,7 +27,7 @@ goo.targetWaist(1.5e-3, 0.5);
 % we create a list of possible lens choices
 focalLengthList = [-.75; .5; 1.75; -2; -1; 2; 3; 1; 2.5; 1.25]; % [meters]
 focalLengthList = linspace(0.03, 2, 30); % [meters]
-flist = [25.4; 50.8; 100; 150; 200; 250; 300; 500; 1000; 2000]/1000;
+f_tlist = [25.4; 50.8; 100; 150; 200; 250; 300; 500; 1000; 2000]/1000;
 focalLengthList = [-f_list; f_list];
 
 lensList = component.lens(focalLengthList);
