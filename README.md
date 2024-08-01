@@ -8,6 +8,10 @@ It requires MATLAB 2008a, you should add the alm folder to your path
 (the @ directories should be in a folder that's in your path, but they
 shouldn't be in the path), or do your work in that folder.
 
+Example:
+alm> addpath('.')
+
+
 type 'help alm' in MATLAB to begin
 
 example scripts (located in examples/):
