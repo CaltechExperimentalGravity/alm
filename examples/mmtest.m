@@ -10,32 +10,24 @@
 % beam for modematchin, and choose an optimum configuration from a list of possible
 % lens choices.
 
-%% a la mode demonstration
-% mode matching and beam propagation solutions in MATLAB.
-%
-% a la mode is a stimple library of gaussian ABCD matrix tools intended to 
-% optimize and visualize optical systems.
-
-%% simple beam path
-%
-% In this example, we will design a simple beam path and then define a target
-% beam for modematchin, and choose an optimum configuration from a list of possible
-% lens choices.
-
 % here we design an initial simple beam path
 % goo = beamPath;
 % goo.addComponent(component.lens(1, 0.05, 'lens1'));
 % goo.addComponent(component.lens(1, 0.20, 'lens2'));
 % goo.seedWaist(300e-6, 0); 
 
+
+
+
 %Attempt to get beam from the fitting done in alm
-zScan = [0 2 4 4 6 8] * 0.0508; % hole spacing is 2 inches
+zScan = [-10 -8 -6 -6 -4 -2] * 0.0254; % hole spacing is 1 inch
+%set zeropoint to the mirror denoted by a screw in the setup
 xWidth = [650 792 937.8 938.5 1100.0 1550] * 1e-6/2;
 yWidth = [604.4 708 825.3 825.9 951.2 1384.2] * 1e-6/2;
 goo = beamPath;
 goo.addComponent(component.lens(1, 0.05, 'lens1'));
 goo.addComponent(component.lens(1, 0.20, 'lens2'));
-goo.seedWaist(33e-6, 0);
+goo.seedWaist(145.7e-6, -13.543*.0254);
 %I assume waist z-position is also measured in meters?
 goox = goo.fitBeamWidth(zScan,xWidth);
 gooy = goo.fitBeamWidth(zScan,yWidth);
@@ -47,7 +39,7 @@ goo.components
 goo.plotSummary(zplot);
 
 %% mode matching optimization
-goo.targetWaist(1.2e-3, 0.5); 
+goo.targetWaist(1.5e-3, 0.508); %want it 20in away 
 
 % we create a list of possible lens choices
 focalLengthList = [-.75; .5; 1.75; -2; -1; 2; 3; 1; 2.5; 1.25]; % [meters]
