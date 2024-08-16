@@ -43,7 +43,7 @@ goo.components
 goo.plotSummary(zplot);
 
 %% mode matching optimization
-goo.targetWaist(1.5e-3, (20+4) * 0.0254); %want it 20in away 
+goo.targetWaist(1.5e-3, (20+3) * 0.0254); %want it 20in away
 
 % we create a list of possible lens choices
 focalLengthList = [-.75; .5; 1.75; -2; -1; 2; 3; 1; 2.5; 1.25]; % [meters]
