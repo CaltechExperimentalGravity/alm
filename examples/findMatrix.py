@@ -66,7 +66,7 @@ def main(args):
                                     args=(q_in, q_out),  # Pass q_in and q_out to the objective function
                                     strategy = 'best1bin',
                                     maxiter = 1000,
-                                    init='sobol',
+                                    init='random',
                                     disp = True,
                                     popsize = 150)
 
